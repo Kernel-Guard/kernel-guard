@@ -1,0 +1,12 @@
+{
+  "name": "kernelguard",
+  "version": "1.0.0",
+  "description": "KernelGuard Website",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx --yes serve ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

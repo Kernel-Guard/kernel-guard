@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KernelGuard - Settings</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js" defer></script>
+    <script src="js/ui.js" defer></script>
+</head>
+<body>
+    <!-- Global Navigation -->
+    <header class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" style="display:flex; align-items:center; text-decoration:none; color:inherit; font-family: var(--font-sans);">
+                    
+<svg viewBox="0 0 32 32" width="24" height="24" style="margin-right: 12px; flex-shrink: 0;">
+    <circle cx="4" cy="4" r="3" fill="#0043CE" opacity="0.2"/>
+    <circle cx="28" cy="4" r="3" fill="#0043CE" opacity="0.2"/>
+    <circle cx="4" cy="28" r="3" fill="#0043CE" opacity="0.2"/>
+    <circle cx="28" cy="28" r="3" fill="#0043CE" opacity="0.2"/>
+    <circle cx="16" cy="4" r="3" fill="#0043CE" opacity="0.6"/>
+    <circle cx="4" cy="16" r="3" fill="#0043CE" opacity="0.6"/>
+    <circle cx="28" cy="16" r="3" fill="#0043CE" opacity="0.6"/>
+    <circle cx="16" cy="28" r="3" fill="#0043CE" opacity="0.6"/>
+    <circle cx="16" cy="16" r="4.5" fill="#0043CE"/>
+</svg>
+
+                    <div><span style="font-weight: 300; letter-spacing: 0.5px;">Kernel</span><span style="font-weight: 700;">Guard</span></div>
+                </a>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html#services">What We Build</a>
+                <a href="index.html#work">Projects</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#contact">Contact</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="nav-action-btn" id="btn-search" aria-label="Search" title="Search">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                </button>
+                <button class="nav-action-btn indicator-dot" id="btn-lang" aria-label="Language" title="Language">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                </button>
+                <div class="nav-dropdown nav-dropdown-lang" id="dropdown-lang">
+                    <div class="dropdown-header">Select Language</div>
+                    <div class="lang-row active" data-lang="en">🇬🇧 English</div>
+                    <div class="lang-row" data-lang="tr">🇹🇷 Türkçe</div>
+                    <div class="lang-row" data-lang="de">🇩🇪 Deutsch</div>
+                    <div class="lang-row" data-lang="fr">🇫🇷 Français</div>
+                </div>
+
+                <button class="nav-action-btn" id="btn-help" aria-label="Help" title="Help">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                </button>
+
+                <a href="settings.html" class="nav-action-btn" aria-label="Settings" title="Settings" style="color: var(--color-blue-60)">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+                </a>
+
+                <button class="nav-action-btn" id="btn-user" aria-label="User" title="User Profile">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </button>
+                <div class="nav-dropdown nav-dropdown-user" id="dropdown-user">
+                    <div class="dropdown-user-header">
+                        <div class="avatar-circle">JS</div>
+                        <div class="user-name">John Smith</div>
+                        <div class="user-email">john@example.com</div>
+                    </div>
+                    <a href="profile.html" class="dropdown-item">My Profile</a>
+                    <a href="profile.html#projects" class="dropdown-item">My Projects</a>
+                    <button class="dropdown-item">Billing</button>
+                    <button class="dropdown-item danger" id="btn-logout">Log Out</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Search Overlay -->
+    <div class="nav-search-overlay" id="search-overlay">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" style="width: 24px; height: 24px; color: var(--color-gray-60); margin-right: 8px;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" class="nav-search-input" placeholder="Search all of KernelGuard" id="search-input">
+        <button class="nav-search-close" id="btn-search-close">✕</button>
+    </div>
+
+    <!-- Overlay & Side Panel -->
+    <div class="overlay-backdrop" id="overlay"></div>
+    <aside class="side-panel" id="panel-help">
+        <div class="panel-header">
+            <h2>Help &amp; Information</h2>
+            <button class="close-btn" id="btn-close-help">✕</button>
+        </div>
+        <div class="panel-content">
+            <a href="#" class="quick-link">Getting Started <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            <a href="#" class="quick-link">Documentation <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            <a href="#" class="quick-link">API Reference <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            <a href="#" class="quick-link">Security Policy <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            
+            <div class="about-company-block">KernelGuard Inc.<br>Secure Systems Infrastructure<br>v2.1.0-beta</div>
+        </div>
+        <div class="panel-footer">
+            <button class="btn btn-secondary btn-block">Contact Support →</button>
+        </div>
+    </aside>
+
+    <!-- Toast Notification -->
+    <div class="toast-container">
+        <div class="toast" id="toast">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Settings saved successfully.
+        </div>
+    </div>
+
+    <main class="page-container container fade-up">
+        <div class="breadcrumb">
+            <a href="index.html">Home</a> &gt; Settings
+        </div>
+        <div class="layout-sidebar">
+            <nav class="sidebar-nav">
+                <a href="#" class="sidebar-nav-link active">General</a>
+                <a href="#" class="sidebar-nav-link">Appearance</a>
+                <a href="#" class="sidebar-nav-link">Notifications</a>
+                <a href="#" class="sidebar-nav-link">Privacy &amp; Security</a>
+                <a href="#" class="sidebar-nav-link" onclick="document.getElementById('btn-lang').click()">Language</a>
+                <a href="#" class="sidebar-nav-link">Integrations</a>
+            </nav>
+            <div class="content-area">
+                <h1 class="text-section-title" style="margin-bottom: 48px;">General Settings</h1>
+                
+                <div class="setting-section">
+                    <div class="setting-section-title">Application Preferences</div>
+                    
+                    <div class="toggle-wrapper">
+                        <span class="toggle-label">Start on boot</span>
+                        <div class="toggle-switch active"></div>
+                    </div>
+                    <div class="toggle-wrapper">
+                        <span class="toggle-label">Enable background telemetry</span>
+                        <div class="toggle-switch"></div>
+                    </div>
+                    <div class="toggle-wrapper">
+                        <span class="toggle-label">Hardware acceleration</span>
+                        <div class="toggle-switch active"></div>
+                    </div>
+                </div>
+
+                <div class="setting-section">
+                    <div class="setting-section-title">API Configuration</div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Default Endpoint URL</label>
+                        <input type="text" class="form-input" value="https://api.kernelguard.com/v1">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Timeout (ms)</label>
+                        <input type="number" class="form-input" value="5000">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Save Bar -->
+    <div class="sticky-save-bar" id="sticky-save">
+        <div class="container" style="display: flex; justify-content: flex-end;">
+            <button class="btn btn-primary" id="btn-save">Save Changes</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="footer-bottom-text">KernelGuard Inc. &copy; 2026</div>
+                <div class="footer-social">
+                    <a href="https://github.com/Kernel-Guard" aria-label="GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.379.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.161 22 16.416 22 12c0-5.523-4.477-10-10-10z"/></svg></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
