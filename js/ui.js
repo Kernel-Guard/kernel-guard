@@ -1,3 +1,20 @@
+
+// Calculate relative path prefix for links if we're in a sub-directory
+const basePath = window.location.pathname.includes('/pages/') || window.location.pathname.includes('/projects/') ? '../' : './';
+
+// Fix static dropdown links dynamically depending on where the user is
+document.addEventListener('DOMContentLoaded', () => {
+    const dropdownLinks = document.querySelectorAll('.dropdown-item');
+    dropdownLinks.forEach(link => {
+        let href = link.getAttribute('href');
+        if(href === 'pages/profile.html' || href === 'pages/settings.html' || href === 'index.html' || href === '#') {
+           // Do not prepend if it's # format or absolute, etc.
+           if(href !== '#') {
+               link.setAttribute('href', basePath + href);
+           }
+        }
+    });
+});
 document.addEventListener("DOMContentLoaded", () => {
     // 1. Language Dropdown
     const btnLang = document.getElementById('btn-lang');
