@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KernelGuard - Profile</title>
     <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/theme.js"></script>
     <script src="../js/main.js" defer></script>
+    <script src="../js/i18n.js" defer></script>
     <script src="../js/ui.js" defer></script>
 </head>
 <body>
@@ -32,11 +34,15 @@
             </div>
             <nav class="nav-links">
                 <a href="index.html#services">What We Build</a>
-                <a href="../index.html#work">Projects</a>
+                <a href="../index.html#work" data-i18n="nav.projects">Projects</a>
                 <a href="index.html#about">About</a>
                 <a href="index.html#contact">Contact</a>
             </nav>
             <div class="nav-actions">
+                <button class="nav-action-btn theme-toggle" id="btn-theme" aria-label="Toggle Theme" title="Toggle Theme">
+                    <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+                </button>
                 <button class="nav-action-btn" id="btn-search" aria-label="Search" title="Search">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
                 </button>
@@ -44,7 +50,7 @@
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
                 </button>
                 <div class="nav-dropdown nav-dropdown-lang" id="dropdown-lang">
-                    <div class="dropdown-header">Select Language</div>
+                    <div class="dropdown-header" data-i18n="nav.lang.header">Select Language</div>
                     <div class="lang-row active" data-lang="en">🇬🇧 English</div>
                     <div class="lang-row" data-lang="tr">🇹🇷 Türkçe</div>
                     <div class="lang-row" data-lang="de">🇩🇪 Deutsch</div>
@@ -63,15 +69,24 @@
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                 </button>
                 <div class="nav-dropdown nav-dropdown-user" id="dropdown-user">
+                    
                     <div class="dropdown-user-header">
-                        <div class="avatar-circle">JS</div>
-                        <div class="user-name">John Smith</div>
-                        <div class="user-email">john@example.com</div>
+                        <div class="avatar-circle">KG</div>
+                        <div class="user-name" data-i18n="nav.user.teamName">KernelGuard Team</div>
+                        <div class="user-email" style="white-space: normal; line-height: 1.5; margin-top: 8px;" data-i18n="nav.user.teamDesc">A specialized 3-person development collective focused on systems engineering, rigorous cybersecurity, and scalable full-stack infrastructure.</div>
                     </div>
-                    <a href="../pages/profile.html" class="dropdown-item">My Profile</a>
-                    <a href="profile.html#projects" class="dropdown-item">My Projects</a>
-                    <button class="dropdown-item">Billing</button>
-                    <button class="dropdown-item danger" id="btn-logout">Log Out</button>
+                    <!-- 
+                       Suggested React/Tailwind Loading Skeleton for data fetch:
+                       <div className="animate-pulse flex space-x-4 p-4">
+                         <div className="rounded-full bg-gray-200 h-10 w-10"></div>
+                         <div className="flex-1 space-y-3 py-1">
+                           <div className="h-2 bg-gray-200 rounded w-3/4"></div>
+                           <div className="h-2 bg-gray-200 rounded w-5/6"></div>
+                         </div>
+                       </div>
+                    -->
+<a href="../pages/profile.html" class="dropdown-item" data-i18n="nav.user.myProfile">My Profile</a>
+                    <a href="profile.html#projects" class="dropdown-item" data-i18n="nav.user.myProjects">My Projects</a>
                 </div>
             </div>
         </div>
@@ -80,7 +95,7 @@
     <!-- Search Overlay -->
     <div class="nav-search-overlay" id="search-overlay">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" style="width: 24px; height: 24px; color: var(--color-gray-60); margin-right: 8px;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input type="text" class="nav-search-input" placeholder="Search all of KernelGuard" id="search-input">
+        <input type="text" class="nav-search-input" placeholder="Search all of KernelGuard" data-i18n-placeholder="nav.search.placeholder" id="search-input">
         <button class="nav-search-close" id="btn-search-close">✕</button>
     </div>
 
@@ -88,14 +103,14 @@
     <div class="overlay-backdrop" id="overlay"></div>
     <aside class="side-panel" id="panel-help">
         <div class="panel-header">
-            <h2>Help &amp; Information</h2>
+            <h2 data-i18n="nav.help.title">Help &amp; Information</h2>
             <button class="close-btn" id="btn-close-help">✕</button>
         </div>
         <div class="panel-content">
-            <a href="#" class="quick-link">Getting Started <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-            <a href="#" class="quick-link">Documentation <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            <a href="#" class="quick-link"><span data-i18n="nav.help.gettingStarted">Getting Started</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            <a href="#" class="quick-link"><span data-i18n="nav.help.documentation">Documentation</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
             
-            <div class="about-company-block">KernelGuard Inc.<br>Secure Systems Infrastructure<br>v2.1.0-beta</div>
+            <div class="about-company-block"><span data-i18n="nav.help.companyBlock">KernelGuard Inc.<br>Secure Systems Infrastructure<br>v2.1.0-beta</span></div>
         </div>
     </aside>
 

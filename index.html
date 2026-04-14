@@ -6,8 +6,12 @@
     <title>KernelGuard - Engineering Tomorrow's Software</title>
     <meta name="description" content="Secure systems, intelligent infrastructure, and scalable web platforms.">
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/theme.js"></script>
     <script src="js/main.js" defer></script>
+    <script src="js/i18n.js" defer></script>
     <script src="js/ui.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="js/contact.js" defer></script>
 </head>
 <body>
     <!-- Global Navigation -->
@@ -32,12 +36,16 @@
                 </a>
             </div>
             <nav class="nav-links">
-                <a href="#services">What We Build</a>
-                <a href="#work">Projects</a>
-                <a href="#about">About</a>
-                <a href="#contact">Contact</a>
+                <a href="#services" data-i18n="nav.whatWeBuild">What We Build</a>
+                <a href="#work" data-i18n="nav.projects">Projects</a>
+                <a href="#about" data-i18n="nav.about">About</a>
+                <a href="#contact" data-i18n="nav.contact">Contact</a>
             </nav>
             <div class="nav-actions">
+                <button class="nav-action-btn theme-toggle" id="btn-theme" aria-label="Toggle Theme" title="Toggle Theme">
+                    <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+                </button>
                 <button class="nav-action-btn" id="btn-search" aria-label="Search" title="Search">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
                 </button>
@@ -46,7 +54,7 @@
                 </button>
                 <!-- Language Dropdown -->
                 <div class="nav-dropdown nav-dropdown-lang" id="dropdown-lang">
-                    <div class="dropdown-header">Select Language</div>
+                    <div class="dropdown-header" data-i18n="nav.lang.header">Select Language</div>
                     <div class="lang-row active" data-lang="en">🇬🇧 English</div>
                     <div class="lang-row" data-lang="tr">🇹🇷 Türkçe</div>
                     <div class="lang-row" data-lang="de">🇩🇪 Deutsch</div>
@@ -66,15 +74,24 @@
                 </button>
                 <!-- User Dropdown -->
                 <div class="nav-dropdown nav-dropdown-user" id="dropdown-user">
+                    
                     <div class="dropdown-user-header">
-                        <div class="avatar-circle">JS</div>
-                        <div class="user-name">John Smith</div>
-                        <div class="user-email">john@example.com</div>
+                        <div class="avatar-circle">KG</div>
+                        <div class="user-name" data-i18n="nav.user.teamName">KernelGuard Team</div>
+                        <div class="user-email" style="white-space: normal; line-height: 1.5; margin-top: 8px;" data-i18n="nav.user.teamDesc">A specialized 3-person development collective focused on systems engineering, rigorous cybersecurity, and scalable full-stack infrastructure.</div>
                     </div>
-                    <a href="pages/profile.html" class="dropdown-item">My Profile</a>
-                    <a href="profile.html#projects" class="dropdown-item">My Projects</a>
-                    <button class="dropdown-item">Billing</button>
-                    <button class="dropdown-item danger" id="btn-logout">Log Out</button>
+                    <!-- 
+                       Suggested React/Tailwind Loading Skeleton for data fetch:
+                       <div className="animate-pulse flex space-x-4 p-4">
+                         <div className="rounded-full bg-gray-200 h-10 w-10"></div>
+                         <div className="flex-1 space-y-3 py-1">
+                           <div className="h-2 bg-gray-200 rounded w-3/4"></div>
+                           <div className="h-2 bg-gray-200 rounded w-5/6"></div>
+                         </div>
+                       </div>
+                    -->
+<a href="pages/profile.html" class="dropdown-item" data-i18n="nav.user.myProfile">My Profile</a>
+                    <a href="profile.html#projects" class="dropdown-item" data-i18n="nav.user.myProjects">My Projects</a>
                 </div>
             </div>
         </div>
@@ -83,7 +100,7 @@
     <!-- Search Overlay -->
     <div class="nav-search-overlay" id="search-overlay">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" style="width: 24px; height: 24px; color: var(--color-gray-60); margin-right: 8px;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input type="text" class="nav-search-input" placeholder="Search all of KernelGuard" id="search-input">
+        <input type="text" class="nav-search-input" placeholder="Search all of KernelGuard" data-i18n-placeholder="nav.search.placeholder" id="search-input">
         <button class="nav-search-close" id="btn-search-close">✕</button>
     </div>
 
@@ -92,23 +109,21 @@
 
     <aside class="side-panel" id="panel-help">
         <div class="panel-header">
-            <h2>Help &amp; Information</h2>
+            <h2 data-i18n="nav.help.title">Help &amp; Information</h2>
             <button class="close-btn" id="btn-close-help">✕</button>
         </div>
         <div class="panel-content">
-            <a href="#" class="quick-link">Getting Started <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-            <a href="#" class="quick-link">Documentation <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-            <a href="#" class="quick-link">API Reference <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-            <a href="#" class="quick-link">Security Policy <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            <a href="#" class="quick-link"><span data-i18n="nav.help.gettingStarted">Getting Started</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            <a href="#" class="quick-link"><span data-i18n="nav.help.documentation">Documentation</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            <a href="#" class="quick-link"><span data-i18n="nav.help.apiReference">API Reference</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            <a href="#" class="quick-link"><span data-i18n="nav.help.securityPolicy">Security Policy</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
             
             <div class="about-company-block">
-                KernelGuard Inc.<br>
-                Secure Systems Infrastructure<br>
-                v2.1.0-beta
+                <span data-i18n="nav.help.companyBlock"><span data-i18n="nav.help.companyBlock">KernelGuard Inc.<br>Secure Systems Infrastructure<br>v2.1.0-beta</span></span>
             </div>
         </div>
         <div class="panel-footer">
-            <button class="btn btn-secondary btn-block">Contact Support →</button>
+            <button class="btn btn-secondary btn-block" data-i18n="nav.help.contactSupport">Contact Support →</button>
         </div>
     </aside>
 
@@ -117,9 +132,9 @@
         <div class="container hero-grid fade-up">
             <div class="hero-content">
                 <h1 class="text-hero fade-up">KernelGuard</h1>
-                <p class="hero-tagline fade-up">Kernel Guard builds secure systems, intelligent infrastructure, and scalable web platforms.<br><br>We focus on cybersecurity, systems engineering, and production-grade software designed for reliability, performance, and long-term maintainability.</p>
+                <p class="hero-tagline fade-up" data-i18n="hero.tagline">Kernel Guard builds secure systems, intelligent infrastructure, and scalable web platforms.<br><br>We focus on cybersecurity, systems engineering, and production-grade software designed for reliability, performance, and long-term maintainability.</p>
                 <div class="fade-up">
-                    <a href="#work" class="btn btn-primary">See Our Work</a>
+                    <a href="#work" class="btn btn-primary" data-i18n="hero.cta">See Our Work</a>
                 </div>
             </div>
             <div class="hero-visual fade-up">
@@ -141,35 +156,35 @@
     <!-- Services Section (What We Build) -->
     <section class="services" id="services">
         <div class="container container-services">
-            <h2 class="text-section-title fade-up" style="margin-bottom: 32px;">What We Build</h2>
+            <h2 class="text-section-title fade-up" style="margin-bottom: 32px;"><span data-i18n="services.title">What We Build</span></h2>
             <div class="services-grid">
                 <!-- Secure Systems -->
                 <div class="service-card fade-up">
                     <div class="service-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                     </div>
-                    <p class="service-desc">Secure systems and security-focused infrastructure.</p>
+                    <p class="service-desc" data-i18n="services.secure">Secure systems and security-focused infrastructure.</p>
                 </div>
                 <!-- Intelligent platforms -->
                 <div class="service-card fade-up">
                     <div class="service-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 16h20M2 8h20"/><circle cx="12" cy="12" r="3"/><path d="M12 15v7M12 2v7"/></svg>
                     </div>
-                    <p class="service-desc">Intelligent platforms powered by AI and data-driven engineering.</p>
+                    <p class="service-desc" data-i18n="services.intelligent">Intelligent platforms powered by AI and data-driven engineering.</p>
                 </div>
                 <!-- Scalable backend -->
                 <div class="service-card fade-up">
                     <div class="service-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
                     </div>
-                    <p class="service-desc">Scalable backend and web applications.</p>
+                    <p class="service-desc" data-i18n="services.scalable">Scalable backend and web applications.</p>
                 </div>
                 <!-- High-performance software -->
                 <div class="service-card fade-up">
                     <div class="service-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
                     </div>
-                    <p class="service-desc">High-performance software with strong operational discipline.</p>
+                    <p class="service-desc" data-i18n="services.highPerf">High-performance software with strong operational discipline.</p>
                 </div>
             </div>
         </div>
@@ -178,14 +193,14 @@
     <!-- Core Areas Strip -->
     <section class="tech-stack">
         <div class="container">
-            <h2 class="tech-stack-label fade-up">Core Areas</h2>
+            <h2 class="tech-stack-label fade-up" data-i18n="core.title">Core Areas</h2>
             <div class="tech-logos" style="gap: 32px;">
-                <div class="tech-logo fade-up"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Cybersecurity Engineering</div>
-                <div class="tech-logo fade-up"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> eBPF and Runtime Security</div>
-                <div class="tech-logo fade-up"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg> Systems Programming</div>
-                <div class="tech-logo fade-up"><svg viewBox="0 0 24 24"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg> Cloud and Infrastructure Engineering</div>
-                <div class="tech-logo fade-up"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"/></svg> AI-Driven Systems</div>
-                <div class="tech-logo fade-up"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg> Scalable Web Platforms</div>
+                <div class="tech-logo fade-up"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> <span data-i18n="core.cybersecurity">Cybersecurity Engineering</span></div>
+                <div class="tech-logo fade-up"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> <span data-i18n="core.ebpf">eBPF and Runtime Security</span></div>
+                <div class="tech-logo fade-up"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg> <span data-i18n="core.systems">Systems Programming</span></div>
+                <div class="tech-logo fade-up"><svg viewBox="0 0 24 24"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg> <span data-i18n="core.cloud">Cloud and Infrastructure Engineering</span></div>
+                <div class="tech-logo fade-up"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"/></svg> <span data-i18n="core.ai">AI-Driven Systems</span></div>
+                <div class="tech-logo fade-up"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg> <span data-i18n="core.web">Scalable Web Platforms</span></div>
             </div>
         </div>
     </section>
@@ -193,37 +208,34 @@
     <!-- Featured Project -->
     <section class="featured" id="work">
         <div class="container fade-up">
-            <h2 class="text-section-title" style="margin-bottom: 48px;">Flagship Projects</h2>
+            <h2 class="text-section-title" style="margin-bottom: 48px;" data-i18n="projects.title">Flagship Projects</h2>
             
-            <div style="margin-bottom: 24px; font-weight: 600; color: var(--color-gray-100);">Open Source Projects</div>
+            <div style="margin-bottom: 24px; font-weight: 600; color: var(--color-gray-100);" data-i18n="projects.openSource">Open Source Projects</div>
             <div class="projects-grid" style="margin-bottom: 64px;">
                 <a href="projects/project-aegis.html" class="project-card fade-up" style="text-decoration: none; color: inherit; display: block;">
-                    <h3>Aegis-BPF</h3>
-                    <p>A runtime security engine built with eBPF CO-RE and LSM-based enforcement, designed for synchronous kernel-level protection.</p>
+                    <h3 data-i18n="projects.aegis.title">Aegis-BPF</h3>
+                    <p data-i18n="projects.aegis.desc">A runtime security engine built with eBPF CO-RE and LSM-based enforcement, designed for synchronous kernel-level protection.</p>
                 </a>
                 
                 <a href="projects/project-cathodex.html" class="project-card fade-up" style="text-decoration: none; color: inherit; display: block;">
-                    <h3>CathodeX</h3>
-                    <p>High-performance userspace networking stack engineered in C, optimized for massive concurrency and determinism.</p>
+                    <h3 data-i18n="projects.cathodex.title">CathodeX</h3>
+                    <p data-i18n="projects.cathodex.desc">High-performance userspace networking stack engineered in C, optimized for massive concurrency and determinism.</p>
                 </a>
             </div>
 
-            <div style="margin-bottom: 24px; font-weight: 600; color: var(--color-gray-100); border-top: 1px solid var(--color-gray-20); padding-top: 32px;">Closed Source Projects (Demos)</div>
+            <div style="margin-bottom: 24px; font-weight: 600; color: var(--color-gray-100); border-top: 1px solid var(--color-gray-20); padding-top: 32px;" data-i18n="projects.closedSource">Closed Source Projects (Demos)</div>
             <div class="projects-grid">
                 <a href="projects/project-eduhub.html" class="project-card fade-up" style="text-decoration: none; color: inherit; display: block;">
-                    <h3>EduHub Campus</h3>
-                    <p>A B2B enterprise room and resource reservation system with secure tenant-based isolation and audit trails.</p>
+                    <h3 data-i18n="projects.eduhub.title">EduHub Campus</h3>
+                    <p data-i18n="projects.eduhub.desc">A B2B enterprise room and resource reservation system with secure tenant-based isolation and audit trails.</p>
                 </a>
 
                 <a href="projects/project-refatelier.html" class="project-card fade-up" style="text-decoration: none; color: inherit; display: block;">
-                    <h3>Ref Atelier</h3>
-                    <p>A high-performance luxury e-commerce frontend architecture ensuring fast load times and seamless localization.</p>
+                    <h3 data-i18n="projects.refatelier.title">Ref Atelier</h3>
+                    <p data-i18n="projects.refatelier.desc">A high-performance luxury e-commerce frontend architecture ensuring fast load times and seamless localization.</p>
                 </a>
 
-                <a href="projects/project-hrportal.html" class="project-card fade-up" style="text-decoration: none; color: inherit; display: block;">
-                    <h3>Nexus HR Portal</h3>
-                    <p>A fully integrated internal hiring and applicant tracking portal designed for high data integrity and workflow automation.</p>
-                </a>
+                
             </div>
 
         </div>
@@ -234,46 +246,108 @@
         <div class="container fade-up">
             <div class="about-grid" style="grid-template-columns: 1fr 1fr;">
                 <div class="about-principles fade-up">
-                    <h2 class="text-section-title" style="margin-bottom: 32px;">Engineering Principles</h2>
-                    <p style="margin-bottom: 24px; font-weight: 600;">We value:</p>
+                    <h2 class="text-section-title" style="margin-bottom: 32px;" data-i18n="about.principles.title">Engineering Principles</h2>
+                    <p style="margin-bottom: 24px; font-weight: 600;" data-i18n="about.principles.weValue">We value:</p>
                     <ul class="carbon-list">
-                        <li>Security by design</li>
-                        <li>Measured performance</li>
-                        <li>Clear operational contracts</li>
-                        <li>Production readiness</li>
-                        <li>Evidence over claims</li>
+                        <li data-i18n="about.principles.security">Security by design</li>
+                        <li data-i18n="about.principles.performance">Measured performance</li>
+                        <li data-i18n="about.principles.contracts">Clear operational contracts</li>
+                        <li data-i18n="about.principles.production">Production readiness</li>
+                        <li data-i18n="about.principles.evidence">Evidence over claims</li>
                     </ul>
                 </div>
                 <div class="about-mission fade-up">
-                    <h2 class="text-section-title" style="margin-bottom: 32px;">Mission</h2>
-                    <p class="mission" style="font-size: 20px; line-height: 1.6; color: var(--color-gray-100);">
-                        Kernel Guard exists to build software that is not only functional, but secure, resilient, and engineered to hold up under real-world conditions.
-                    </p>
+                    <h2 class="text-section-title" style="margin-bottom: 32px;" data-i18n="about.mission.title">Mission</h2>
+                    <p class="mission" style="font-size: 20px; line-height: 1.6; color: var(--color-gray-100);"><span data-i18n="about.mission.text">Kernel Guard exists to build software that is not only functional, but secure, resilient, and engineered to hold up under real-world conditions.</span></p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer id="contact">
-        <div class="footer-top">
-            <div class="container fade-up">
-                <h2 class="text-section-title">Ready to build something serious?</h2>
-                <p>For collaborations, partnerships, or technical discussions, feel free to reach out.</p>
-                <div class="footer-actions">
-                    <a href="mailto:hello@kernelguard.com" class="btn btn-primary">Contact Us</a>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <!-- Left: Form -->
+                <div>
+                    <div class="contact-header">
+                        <h2 data-i18n="contact.title">Ready to build something serious?</h2>
+                        <p data-i18n="contact.desc">For collaborations, partnerships, or technical discussions — reach out directly. We respond within 24 hours.</p>
+                    </div>
+                    <form id="contact-form" action="https://formspree.io/f/xyzgobrl" method="POST">
+                        <div class="contact-form-group">
+                            <label data-i18n="contact.name">Name</label>
+                            <input type="text" name="name" class="contact-input" placeholder="Your full name" required data-i18n-placeholder="contact.name.placeholder">
+                        </div>
+                        <div class="contact-form-group">
+                            <label data-i18n="contact.org">Organization</label>
+                            <input type="text" name="organization" class="contact-input" placeholder="Company or institution" data-i18n-placeholder="contact.org.placeholder">
+                        </div>
+                        <div class="contact-form-group">
+                            <label data-i18n="contact.email">Work Email</label>
+                            <input type="email" name="email" id="contact-email" class="contact-input" placeholder="you@company.com" required data-i18n-placeholder="contact.email.placeholder">
+                            <div class="contact-error-msg" id="email-error" data-i18n="contact.email.error">Please enter a valid email address.</div>
+                        </div>
+                        <div class="contact-form-group">
+                            <label data-i18n="contact.message">Message</label>
+                            <textarea name="message" class="contact-input contact-textarea" placeholder="Tell us about your project or inquiry..." required data-i18n-placeholder="contact.message.placeholder"></textarea>
+                        </div>
+                        <button type="submit" class="contact-submit" id="contact-submit">
+                            <span class="btn-text" data-i18n="contact.send">Send Message</span>
+                            <div class="spinner"></div>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Right: Team Cards -->
+                <div>
+                    <div class="contact-header">
+                        <h2 data-i18n="contact.team.title">Connect with the Team</h2>
+                        <p data-i18n="contact.team.desc">Our founding engineers are available on LinkedIn for professional inquiries and collaboration.</p>
+                    </div>
+                    <div class="team-cards">
+                        <a href="https://www.linkedin.com/in/eren-ari/" target="_blank" class="team-card">
+                            <div class="team-avatar">EA</div>
+                            <div class="team-info">
+                                <div class="name">Eren Arı</div>
+                                <div class="role" data-i18n="contact.team.role1">Full-Stack Developer</div>
+                            </div>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/mahmut-%C3%BCn%C3%BCvar-1281a527a/" target="_blank" class="team-card">
+                            <div class="team-avatar">MÜ</div>
+                            <div class="team-info">
+                                <div class="name">Mahmut Ünüvar</div>
+                                <div class="role" data-i18n="contact.team.role2">Software Developer</div>
+                            </div>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/yusuf-demirel-46800b376/" target="_blank" class="team-card">
+                            <div class="team-avatar">YD</div>
+                            <div class="team-info">
+                                <div class="name">Yusuf Demirel</div>
+                                <div class="role" data-i18n="contact.team.role3">Design Engineer</div>
+                            </div>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
+    </section>
+
+    <!-- Footer Bottom Bar -->
+    <footer>
         <div class="footer-bottom">
             <div class="container">
                 <div class="footer-bottom-text">
                     KernelGuard Inc. &copy; 2026
                 </div>
                 <div class="footer-nav">
-                    <a href="#services">What We Build</a>
-                    <a href="#work">Projects</a>
-                    <a href="#about">About</a>
+                    <a href="#services" data-i18n="nav.whatWeBuild">What We Build</a>
+                    <a href="#work" data-i18n="nav.projects">Projects</a>
+                    <a href="#about" data-i18n="nav.about">About</a>
                 </div>
                 <div class="footer-social">
                     <a href="https://github.com/Kernel-Guard" aria-label="GitHub">
@@ -286,5 +360,12 @@
             </div>
         </div>
     </footer>
+
+    <!-- Success Toast -->
+    <div class="contact-toast" id="contact-toast">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#24A148" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <span data-i18n="contact.toast">Message sent successfully. We'll be in touch soon.</span>
+    </div>
+
 </body>
 </html>

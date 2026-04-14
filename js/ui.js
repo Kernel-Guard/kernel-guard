@@ -23,8 +23,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // 2. User Dropdown (Mocking State)
     const btnUser = document.getElementById('btn-user');
     const dropdownUser = document.getElementById('dropdown-user');
-    const btnLogout = document.getElementById('btn-logout');
-    
     // 3. Help Panel
     const btnHelp = document.getElementById('btn-help');
     const panelHelp = document.getElementById('panel-help');
@@ -116,32 +114,15 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // --- Language Translation Logic (Mock) ---
+    // --- Language Translation Logic (Full i18n) ---
     const langRows = document.querySelectorAll('.lang-row');
-    const dummyDict = {
-        'en': { tagline: "Kernel Guard builds secure systems, intelligent infrastructure, and scalable web platforms.<br><br>We focus on cybersecurity..." },
-        'tr': { tagline: "Kernel Guard güvenli sistemler, akıllı altyapılar ve ölçeklenebilir web platformları kurar.<br><br>Siber güvenliğe odaklanıyoruz..." },
-        'de': { tagline: "Kernel Guard baut sichere Systeme, intelligente Infrastruktur und skalierbare Webplattformen auf.<br><br>Wir konzentrieren uns auf Cybersicherheit..." },
-        'fr': { tagline: "Kernel Guard crée des systèmes sécurisés, des infrastructures intelligentes et des plateformes web évolutives..." }
-    };
-    const heroTagline = document.querySelector('.hero-tagline');
 
     langRows.forEach(row => {
         row.addEventListener('click', () => {
             const lang = row.getAttribute('data-lang');
-            langRows.forEach(r => r.classList.remove('active'));
-            row.classList.add('active');
-            
-            // Apply mock translation to tagline
-            if(heroTagline && dummyDict[lang]) {
-                heroTagline.innerHTML = dummyDict[lang].tagline;
-            }
-
-            // Decorator dot on globe
-            if(lang !== 'en') {
-                btnLang.classList.add('active');
-            } else {
-                btnLang.classList.remove('active');
+            // Use the global applyTranslation from i18n.js
+            if (typeof applyTranslation === 'function') {
+                applyTranslation(lang);
             }
             // dropdown closes naturally from document bubbling
         });
@@ -156,19 +137,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if(dropdownUser) {
         dropdownUser.addEventListener('click', e => {
             if(!e.target.closest('.dropdown-item')) e.stopPropagation();
-        });
-    }
-
-    // --- Logout Mock logic ---
-    if(btnLogout) {
-        btnLogout.addEventListener('click', () => {
-            alert('Successfully logged out.');
-            if(dropdownUser) {
-                dropdownUser.innerHTML = `
-                    <a href="#" class="dropdown-item">Log In</a>
-                    <a href="#" class="dropdown-item">Sign Up</a>
-                `;
-            }
         });
     }
 

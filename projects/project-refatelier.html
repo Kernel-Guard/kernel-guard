@@ -6,7 +6,9 @@
     <title>KernelGuard - Engineering Tomorrow's Software</title>
     <meta name="description" content="Secure systems, intelligent infrastructure, and scalable web platforms.">
     <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/theme.js"></script>
     <script src="../js/main.js" defer></script>
+    <script src="../js/i18n.js" defer></script>
     <script src="../js/ui.js" defer></script>
 </head>
 <body>
@@ -32,12 +34,16 @@
                 </a>
             </div>
             <nav class="nav-links">
-                <a href="../index.html#services">What We Build</a>
-                <a href="../index.html#work">Projects</a>
-                <a href="../index.html#about">About</a>
-                <a href="../index.html#contact">Contact</a>
+                <a href="../index.html#services" data-i18n="nav.whatWeBuild">What We Build</a>
+                <a href="../index.html#work" data-i18n="nav.projects">Projects</a>
+                <a href="../index.html#about" data-i18n="nav.about">About</a>
+                <a href="../index.html#contact" data-i18n="nav.contact">Contact</a>
             </nav>
             <div class="nav-actions">
+                <button class="nav-action-btn theme-toggle" id="btn-theme" aria-label="Toggle Theme" title="Toggle Theme">
+                    <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+                </button>
                 <button class="nav-action-btn" id="btn-search" aria-label="Search" title="Search">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
                 </button>
@@ -46,7 +52,7 @@
                 </button>
                 <!-- Language Dropdown -->
                 <div class="nav-dropdown nav-dropdown-lang" id="dropdown-lang">
-                    <div class="dropdown-header">Select Language</div>
+                    <div class="dropdown-header" data-i18n="nav.lang.header">Select Language</div>
                     <div class="lang-row active" data-lang="en">🇬🇧 English</div>
                     <div class="lang-row" data-lang="tr">🇹🇷 Türkçe</div>
                     <div class="lang-row" data-lang="de">🇩🇪 Deutsch</div>
@@ -66,15 +72,24 @@
                 </button>
                 <!-- User Dropdown -->
                 <div class="nav-dropdown nav-dropdown-user" id="dropdown-user">
+                    
                     <div class="dropdown-user-header">
-                        <div class="avatar-circle">JS</div>
-                        <div class="user-name">John Smith</div>
-                        <div class="user-email">john@example.com</div>
+                        <div class="avatar-circle">KG</div>
+                        <div class="user-name" data-i18n="nav.user.teamName">KernelGuard Team</div>
+                        <div class="user-email" style="white-space: normal; line-height: 1.5; margin-top: 8px;" data-i18n="nav.user.teamDesc">A specialized 3-person development collective focused on systems engineering, rigorous cybersecurity, and scalable full-stack infrastructure.</div>
                     </div>
-                    <a href="../pages/profile.html" class="dropdown-item">My Profile</a>
-                    <a href="profile.html#projects" class="dropdown-item">My Projects</a>
-                    <button class="dropdown-item">Billing</button>
-                    <button class="dropdown-item danger" id="btn-logout">Log Out</button>
+                    <!-- 
+                       Suggested React/Tailwind Loading Skeleton for data fetch:
+                       <div className="animate-pulse flex space-x-4 p-4">
+                         <div className="rounded-full bg-gray-200 h-10 w-10"></div>
+                         <div className="flex-1 space-y-3 py-1">
+                           <div className="h-2 bg-gray-200 rounded w-3/4"></div>
+                           <div className="h-2 bg-gray-200 rounded w-5/6"></div>
+                         </div>
+                       </div>
+                    -->
+<a href="../pages/profile.html" class="dropdown-item" data-i18n="nav.user.myProfile">My Profile</a>
+                    <a href="profile.html#projects" class="dropdown-item" data-i18n="nav.user.myProjects">My Projects</a>
                 </div>
             </div>
         </div>
@@ -96,23 +111,19 @@
             <div class="project-grid">
                 <div class="project-card">
                     <div class="project-card-header">
-                        <svg class="project-card-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
-                        Technical Overview
-                    </div>
+                        <svg class="project-card-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg data-i18n="project.techOverview">Technical Overview</div>
                     <p>Headless e-commerce architecture relying on static site generation and edge caching for sub-100ms LCP (Largest Contentful Paint). Integated directly with headless CMS solutions for completely decoupled inventory management.</p>
                 </div>
                 <div class="project-card">
                     <div class="project-card-header">
-                        <svg class="project-card-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
-                        Value Proposition
-                    </div>
+                        <svg class="project-card-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg data-i18n="project.valueProp">Value Proposition</div>
                     <p>Solves the classic "slow storefront" conversion dropoff by rendering everything instantly at the CDN edge. Minimalist UI pushes focus entirely onto the luxury apparel.</p>
                 </div>
             </div>
 
-            <button class="btn btn-primary" style="display:inline-flex; align-items:center; gap:8px;">
+            <a href="#" class="btn btn-primary" style="display:inline-flex; align-items:center; gap:8px; text-decoration:none; width:max-content;">
                 View Storefront
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" style="transform: rotate(45deg);"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            </button>
+            </a>
         </div>
     </main>
