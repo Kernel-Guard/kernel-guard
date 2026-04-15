@@ -1,6 +1,6 @@
 # Kernel Guard
 
-preview the demo from : https://trfont.com/yusuf/
+preview the demo from : https://trfont.com/yusuf/ || https://kernel-guard1.vercel.app/
 
 Kernel Guard builds secure systems, intelligent infrastructure, and scalable web platforms.
 
